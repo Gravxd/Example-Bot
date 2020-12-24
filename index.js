@@ -7,7 +7,14 @@ const client = new Client({
   disableEveryone: false //  If set to 'true', the bot will be unable to ping @everyone // if set to false the bot is able to use @everyone
 });
 
-
+const main_server = client.guilds.find(g => g.id === 'serveridhere')
+client.user.setPresence({
+        status: "online",
+        game: {
+            name: `over ${main_server.memberCount} members!`, // this will display the membercount of the server id you provided above
+            type: "Watching",
+        }
+    })
 client.on('ready', () => { // when the bot is online
   console.log(`Bot is online! - Logged in as: ${client.user.tag}`); // logs to console that the bot is online and shows the bot's discord tag
 });
